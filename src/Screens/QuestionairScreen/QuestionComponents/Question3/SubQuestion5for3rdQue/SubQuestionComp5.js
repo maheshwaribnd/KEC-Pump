@@ -1,22 +1,31 @@
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
-import CustomButton from '../../../../Components/CustomButton/CustomButton';
+import CustomButton from '../../../../../Components/CustomButton/CustomButton';
 import {
   DM_sans_Bold,
   FONTSIZE,
   HEIGHT,
   WIDTH,
-} from '../../../../Config/AppConst';
+} from '../../../../../Config/AppConst';
+import {useSelector} from 'react-redux';
 import {Dropdown} from 'react-native-element-dropdown';
 
-const QuestionComp5 = ({count, setCount, getProgress, questionData}) => {
-  const [value1, setValue1] = useState(null);
-  const [value2, setValue2] = useState(null);
+const SubQuestionComp5 = ({count, setCount, getProgress}) => {
+  const IDselector = useSelector(state => state.AnswerData);
+  const Dataselector = useSelector(state => state.APIData);
+  // const questionDataforLow = Dataselector?.data[6];
+  const questionDataforHigh = Dataselector?.data[12];
+  console.log('questionDataforHigh', questionDataforHigh);
+  // console.log('subQues4questionData', questionDataforLow);
 
-  const buttonFunction = () => {
-    setCount(count + 1);
-    getProgress();
-  };
+  const [value1, setValue1] = useState(null);
 
   const data1 = [
     {label: 'm', value: '1'},
@@ -25,28 +34,53 @@ const QuestionComp5 = ({count, setCount, getProgress, questionData}) => {
     {label: 'psi', value: '4'},
   ];
 
-  const data2 = [
-    {label: `°C`, value: '1'},
-    {label: `°F`, value: '2'},
-  ];
+  const buttonFunction = () => {
+    setCount(count + 1);
+    getProgress();
+  };
+
+  // const renderItemName = item => {
+  //   return (
+  //     <View style={styles.optionviewWrapper}>
+  //       <Text style={{color: '#fff', alignSelf: 'center'}}>{item?.answer}</Text>
+  //     </View>
+  //   );
+  // };
 
   return (
-    <View>
-      <View style={{marginHorizontal: 30}}>
+    <View style={{flex: 1}}>
+      <View style={{marginHorizontal: 15}}>
         <Text style={{color: '#fff', position: 'absolute', right: 1}}>
           {count}/15
         </Text>
-        <View style={{marginTop: HEIGHT(10)}}>
-          <View>
-            <Text style={styles.mainTitle}>
-              {questionData[0]?.question_title}
-            </Text>
+
+        {/* {IDselector.answerID == 4 || IDselector.answerID == 5 ? (
+          <View style={{marginTop: HEIGHT(7)}}>
+            <View>
+              <Text style={styles.mainTitle}>
+                {questionDataforLow[0]?.question_title}
+              </Text>
+            </View>
+
+            <FlatList
+              data={questionDataforLow[0].answers}
+              horizontal={false}
+              renderItem={({item}) => renderItemName(item)}
+              numColumns={3}
+            />
+
+            <View style={styles.button}>
+              <CustomButton
+                btnText="GO TO SUBMERSIBILITY"
+                onpress={() => buttonFunction()}
+              />
+            </View>
           </View>
-          <View style={{marginTop: 10}}>
-            <Text style={{color: '#fff'}}>
-              Please provide the height to be handled or the required pressure
-            </Text>
-          </View>
+        ) : ( */}
+        <View style={{marginTop: HEIGHT(5)}}>
+          <Text style={styles.mainTitle}>
+            {questionDataforHigh?.question_title}
+          </Text>
 
           <View style={styles.viewWrapper}>
             <View style={styles.inputView}>
@@ -78,63 +112,27 @@ const QuestionComp5 = ({count, setCount, getProgress, questionData}) => {
             </TouchableOpacity>
           </View>
 
-          {/* //2 */}
-          <View>
-            <Text style={[styles.mainTitle, {marginTop: HEIGHT(10)}]}>
-              {questionData[1]?.question_title}
-            </Text>
-          </View>
-
-          <View style={styles.viewWrapper}>
-            <View style={styles.inputView}>
-              <Dropdown
-                data={data2}
-                maxHeight={300}
-                labelField="label"
-                valueField="value"
-                iconColor="#fff"
-                style={styles.dropdown}
-                containerStyle={styles.dropdownContainer2}
-                itemTextStyle={styles.itemText}
-                value={value2}
-                onChange={item => {
-                  setValue2(item.value);
-                }}
-                selectedTextStyle={styles.selectedTextStyle}
-                placeholder="°C"
-                placeholderStyle={styles.selectedTextStyle}
-                placeholderTextColor={'#fff'}
-              />
-              <TextInput style={styles.input} />
-            </View>
-
-            <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>+</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>--</Text>
-            </TouchableOpacity>
-          </View>
-
           <View style={styles.button}>
             <CustomButton
-              btnText="Go to installation"
+              btnText="GO TO TEMPERATURE"
               onpress={buttonFunction}
             />
           </View>
         </View>
+        {/* )} */}
       </View>
     </View>
   );
 };
 
-export default QuestionComp5;
+export default SubQuestionComp5;
 
 const styles = StyleSheet.create({
   mainTitle: {
     color: '#fff',
     fontWeight: '500',
     fontSize: 16,
+    marginBottom: 6,
     fontFamily: DM_sans_Bold,
   },
 
@@ -142,6 +140,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 20,
+  },
+
+  forView: {
+    borderWidth: 1,
+    padding: 10,
+    width: WIDTH(40),
+    borderColor: '#fff',
+    marginTop: 10,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+
+  optionviewWrapper: {
+    borderWidth: 1,
+    padding: 10,
+    width: WIDTH(30),
+    borderColor: '#fff',
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: HEIGHT(7),
   },
 
   inputView: {
@@ -203,8 +222,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  forText: {
+    color: '#fff',
+    alignSelf: 'center',
+    marginLeft: 20,
+  },
+
   button: {
     position: 'absolute',
-    top: HEIGHT(67),
+    top: HEIGHT(72),
+  },
+
+  optionBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 45,
+    width: 110,
+    borderColor: 'white',
+    borderWidth: 1,
   },
 });

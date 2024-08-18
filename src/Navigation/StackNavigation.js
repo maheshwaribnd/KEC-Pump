@@ -5,6 +5,13 @@ import SplashScreen from '../Screens/SplashScreen/SplashScreen';
 import QuestionmainScreen from '../Screens/QuestionairScreen/QuestionmainScreen';
 import ContactInformation from '../Screens/ContactForm/ContactInformation';
 import ThankYouScreen from '../Screens/ThankYouScreen/ThankYouScreen';
+import MainQuestion4 from '../Screens/QuestionairScreen/QuestionComponents/Question4/MainQuestion4';
+import MainQuestion5 from '../Screens/QuestionairScreen/QuestionComponents/Question5/MainQuestion5';
+import MainQuestion6 from '../Screens/QuestionairScreen/QuestionComponents/Question6/MainQuestion6';
+import MainQuestion7 from '../Screens/QuestionairScreen/QuestionComponents/Question7/MainQuestion7';
+import MainQuestion8 from '../Screens/QuestionairScreen/QuestionComponents/Question8/MainQuestion8';
+import MainQuestion9 from '../Screens/QuestionairScreen/QuestionComponents/Question9/MainQuestion9';
+import MainQuestion10 from '../Screens/QuestionairScreen/QuestionComponents/Question10/MainQuestion10';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,11 +32,20 @@ const StackNavigation = () => {
           name="questionmainscreen"
           component={QuestionmainScreen}
         />
+
+        <Stack.Screen name="mainquestion4" component={MainQuestion4} />
+        <Stack.Screen name="mainquestion5" component={MainQuestion5} />
+        <Stack.Screen name="mainquestion6" component={MainQuestion6} />
+        <Stack.Screen name="mainquestion7" component={MainQuestion7} />
+        <Stack.Screen name="mainquestion8" component={MainQuestion8} />
+        <Stack.Screen name="mainquestion9" component={MainQuestion9} />
+        <Stack.Screen name="mainquestion10" component={MainQuestion10} />
+
         <Stack.Screen
           name="contactInformation"
           component={ContactInformation}
         />
-        <Stack.Screen name="thankyouscreen" component={ThankYouScreen} /> 
+        <Stack.Screen name="thankyouscreen" component={ThankYouScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

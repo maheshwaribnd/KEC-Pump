@@ -1,6 +1,7 @@
 import {LogBox, StatusBar, StyleSheet} from 'react-native';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import StackNavigation from './Navigation/StackNavigation';
+import {PaperProvider} from 'react-native-paper';
 
 const Index = () => {
   StatusBar.setHidden(true);
@@ -13,7 +14,11 @@ const Index = () => {
 
   LogBox.ignoreLogs(['Warning: ...']);
 
-  return <StackNavigation />;
+  return (
+    <PaperProvider>
+      <StackNavigation />
+    </PaperProvider>
+  );
 };
 
 export default Index;

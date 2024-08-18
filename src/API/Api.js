@@ -26,6 +26,7 @@ const requestPath = {
   getQuestions: 'auth/questions',
 
   //post request
+  postQuestionsId: 'auth/useranswer',
   postContactInfo: 'auth/contact',
 };
 

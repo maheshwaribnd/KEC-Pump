@@ -10,7 +10,7 @@ import CustomButton from '../../../../Components/CustomButton/CustomButton';
 import {DM_sans_Bold, HEIGHT, WIDTH} from '../../../../Config/AppConst';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const QuestionComp14 = ({count, setCount, getProgress, questionData}) => {
+const MainQuestion7 = ({count, setCount, getProgress, questionData}) => {
   const buttonFunction = () => {
     setCount(count + 1);
     getProgress();
@@ -25,7 +25,7 @@ const QuestionComp14 = ({count, setCount, getProgress, questionData}) => {
         <View style={{marginTop: HEIGHT(10)}}>
           <View>
             <Text style={styles.mainTitle}>
-              {questionData[0]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
             </Text>
           </View>
 
@@ -48,7 +48,7 @@ const QuestionComp14 = ({count, setCount, getProgress, questionData}) => {
 
           <View>
             <Text style={[styles.mainTitle, {marginTop: HEIGHT(7)}]}>
-              {questionData[1]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
               {/* Upload data sheet / additional files */}
             </Text>
           </View>
@@ -81,7 +81,7 @@ const QuestionComp14 = ({count, setCount, getProgress, questionData}) => {
   );
 };
 
-export default QuestionComp14;
+export default MainQuestion7;
 
 const styles = StyleSheet.create({
   mainTitle: {

@@ -2,8 +2,13 @@ import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 import CustomButton from '../../../../Components/CustomButton/CustomButton';
 import {DM_sans_Bold, HEIGHT, WIDTH} from '../../../../Config/AppConst';
+import { useSelector } from 'react-redux';
 
-const QuestionComp2 = ({count, setCount, getProgress, questionData}) => {
+const MainQuestion2 = ({count, setCount, getProgress}) => {
+
+  const selector = useSelector(state => state.APIData);
+  const questionData = selector?.data[1];
+
   const buttonFunction = () => {
     setCount(count + 1);
     getProgress();
@@ -17,7 +22,7 @@ const QuestionComp2 = ({count, setCount, getProgress, questionData}) => {
         </Text>
         <View style={{marginTop: HEIGHT(20)}}>
           <View>
-            <Text style={styles.title1}>{questionData[0]?.question_title}</Text>
+            <Text style={styles.title1}>{questionData?.question_title}</Text>
           </View>
 
           <Text style={{color: '#fff'}}>
@@ -35,7 +40,7 @@ const QuestionComp2 = ({count, setCount, getProgress, questionData}) => {
 
           <View style={styles.button}>
             <CustomButton
-              btnText="Go to Hazard Potential"
+              btnText="GO TO HAZARD POTENTIAL"
               onpress={buttonFunction}
             />
           </View>
@@ -45,7 +50,7 @@ const QuestionComp2 = ({count, setCount, getProgress, questionData}) => {
   );
 };
 
-export default QuestionComp2;
+export default MainQuestion2;
 
 const styles = StyleSheet.create({
   title1: {

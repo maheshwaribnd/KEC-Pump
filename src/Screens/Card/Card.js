@@ -13,7 +13,7 @@ import {styles} from './style';
 import Paginator from '../../Components/Pagination/Paginator';
 import {HEIGHT, WIDTH} from '../../Config/AppConst';
 import CustomButton from '../../Components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Header from '../../Components/Header/Header';
 
 const Card = () => {
@@ -21,9 +21,9 @@ const Card = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [indexIncrease, setIndexIncrease] = useState(1);
   const scrollX = useRef(new Animated.Value(0)).current;
-  const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current
+  const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const viewableItemsChanged = useRef(({viewableItems}) => {
     setCurrentIndex(viewableItems[0].index);
@@ -33,7 +33,7 @@ const Card = () => {
     const handleSkip = () => {
       setIndexIncrease(indexIncrease + 1);
       console.log('next');
-      navigation.navigate('questionmainscreen')
+      navigation.navigate('questionmainscreen');
     };
 
     return (
@@ -48,9 +48,9 @@ const Card = () => {
 
         <View style={{marginTop: HEIGHT(8)}}>
           {indexIncrease < 3 ? (
-            <CustomButton btnText="Next" onpress={handleSkip}  />
+            <CustomButton btnText="Next" onpress={handleSkip} />
           ) : (
-            <CustomButton btnText="Start" onpress={handleSkip}  />
+            <CustomButton btnText="Start" onpress={handleSkip} />
           )}
         </View>
       </View>
@@ -67,7 +67,7 @@ const Card = () => {
     //   start={{x: 0, y: 0}}
     //   end={{x: 1, y: 1}}>
     <ImageBackground source={require('../../Images/background.png')}>
-      <Header/>
+      <Header />
       <View style={[styles.container, {width: WIDTH}]}>
         <FlatList
           data={CardDetails}

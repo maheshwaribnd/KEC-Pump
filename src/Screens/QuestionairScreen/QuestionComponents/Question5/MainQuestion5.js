@@ -8,9 +8,18 @@ import {
 } from 'react-native';
 import React from 'react';
 import CustomButton from '../../../../Components/CustomButton/CustomButton';
-import {DM_sans_Bold, HEIGHT, WIDTH} from '../../../../Config/AppConst';
+import { DM_sans_Bold, HEIGHT, WIDTH } from '../../../../Config/AppConst';
+import { useSelector } from 'react-redux';
 
-const QuestionComp12 = ({count, setCount, getProgress, questionData}) => {
+const MainQuestion5 = ({ count, setCount, getProgress }) => {
+
+  const selector = useSelector(state => state.APIData);
+  const questionData = selector?.data;
+  console.log(
+    'questionData.question_title555',
+    questionData[8].question_title,
+  );
+
   const buttonFunction = () => {
     setCount(count + 1);
     getProgress();
@@ -18,18 +27,18 @@ const QuestionComp12 = ({count, setCount, getProgress, questionData}) => {
 
   return (
     <ScrollView>
-      <View style={{marginHorizontal: 30}}>
-        <Text style={{color: '#fff', position: 'absolute', right: 1}}>
+      <View style={{ marginHorizontal: 30 }}>
+        <Text style={{ color: '#fff', position: 'absolute', right: 1 }}>
           {count}/15
         </Text>
-        <View style={{marginTop: HEIGHT(10)}}>
+        <View style={{ marginTop: HEIGHT(10) }}>
           <View>
             <Text style={styles.mainTitle}>
-              {questionData[0]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
             </Text>
           </View>
-          <View style={{marginTop: 10}}>
-            <Text style={{color: '#fff'}}>
+          <View style={{ marginTop: 10 }}>
+            <Text style={{ color: '#fff' }}>
               The ratio of gaseous substances, either as an impurity or as a
               vapor of the main constituent of the liquid, in the conveyed
               material.
@@ -38,25 +47,25 @@ const QuestionComp12 = ({count, setCount, getProgress, questionData}) => {
 
           <View style={styles.viewWrapper}>
             <View style={styles.inputView}>
-              <Text style={{color: '#fff', marginLeft: 10}}>% 1 to 100%</Text>
+              <Text style={{ color: '#fff', marginLeft: 10 }}>% 1 to 100%</Text>
               <TextInput style={styles.input} />
             </View>
             <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>+</Text>
+              <Text style={{ color: '#fff' }}>+</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>--</Text>
+              <Text style={{ color: '#fff' }}>--</Text>
             </TouchableOpacity>
           </View>
 
           {/* //2 */}
           <View>
-            <Text style={[styles.mainTitle, {marginTop: HEIGHT(10)}]}>
-              {questionData[1]?.question_title}
+            <Text style={[styles.mainTitle, { marginTop: HEIGHT(10) }]}>
+              {/* {questionData[0]?.question_title} */}Hi
             </Text>
           </View>
-          <View style={{marginTop: 10}}>
-            <Text style={{color: '#fff'}}>
+          <View style={{ marginTop: 10 }}>
+            <Text style={{ color: '#fff' }}>
               The ratio of solid content in relation to the mass of all liquid
               components.
             </Text>
@@ -64,14 +73,14 @@ const QuestionComp12 = ({count, setCount, getProgress, questionData}) => {
 
           <View style={styles.viewWrapper}>
             <View style={styles.inputView}>
-              <Text style={{color: '#fff', marginLeft: 10}}>% 1 to 100%</Text>
+              <Text style={{ color: '#fff', marginLeft: 10 }}>% 1 to 100%</Text>
               <TextInput style={styles.input} />
             </View>
             <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>+</Text>
+              <Text style={{ color: '#fff' }}>+</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.circle}>
-              <Text style={{color: '#fff'}}>--</Text>
+              <Text style={{ color: '#fff' }}>--</Text>
             </TouchableOpacity>
           </View>
 
@@ -87,7 +96,7 @@ const QuestionComp12 = ({count, setCount, getProgress, questionData}) => {
   );
 };
 
-export default QuestionComp12;
+export default MainQuestion5;
 
 const styles = StyleSheet.create({
   mainTitle: {

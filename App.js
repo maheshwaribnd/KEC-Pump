@@ -1,16 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {PaperProvider} from 'react-native-paper';
 import Index from './src/Index';
+import {Provider} from 'react-redux';
+import store from './src/Redux/Store/store';
 
 const App = () => {
   return (
-    <PaperProvider>
+    <Provider store={store}>
       <Index />
-    </PaperProvider>
+    </Provider>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});

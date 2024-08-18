@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import {Dropdown} from 'react-native-element-dropdown';
 
-const QuestionComp15 = ({count, setCount, getProgress, questionData}) => {
+const MainQuestion8 = ({count, setCount, getProgress, questionData}) => {
   const navigation = useNavigation();
   const [number, setNumber] = useState(1);
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -59,7 +59,7 @@ const QuestionComp15 = ({count, setCount, getProgress, questionData}) => {
         <View style={{marginTop: HEIGHT(15)}}>
           <View>
             <Text style={styles.mainTitle}>
-              {questionData[0]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
             </Text>
           </View>
 
@@ -85,7 +85,7 @@ const QuestionComp15 = ({count, setCount, getProgress, questionData}) => {
 
           <View style={{marginTop: HEIGHT(10)}}>
             <Text style={styles.mainTitle}>
-              {questionData[1]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
             </Text>
           </View>
 
@@ -123,7 +123,7 @@ const QuestionComp15 = ({count, setCount, getProgress, questionData}) => {
   );
 };
 
-export default QuestionComp15;
+export default MainQuestion8;
 
 const styles = StyleSheet.create({
   mainTitle: {

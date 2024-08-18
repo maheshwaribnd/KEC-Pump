@@ -4,14 +4,12 @@ import COLOR from '../../../../Config/color.json';
 import CustomButton from '../../../../Components/CustomButton/CustomButton';
 import {DM_sans_Bold, HEIGHT} from '../../../../Config/AppConst';
 import InputBtn from '../../../../Components/InputBtn/InputBtn';
+import {useSelector} from 'react-redux';
 
-const QuestionComp1 = ({
-  count,
-  setCount,
-  loader,
-  getProgress,
-  questionData,
-}) => {
+const MainQuestion1 = ({count, setCount, loader, getProgress}) => {
+  const selector = useSelector(state => state.APIData);
+  const questionData = selector?.data[0];
+
   const [selectedButton, setSelectedButton] = useState(null);
 
   const buttonFunction = () => {
@@ -35,26 +33,26 @@ const QuestionComp1 = ({
           <View style={{marginTop: HEIGHT(20)}}>
             <View>
               <Text style={styles.mainTitle}>
-                {questionData[0]?.question_title}
+                {questionData?.question_title}
               </Text>
             </View>
             <View style={{marginTop: 10}}>
               <InputBtn
-                title={questionData[0]?.answers[0]?.answer}
+                title={questionData?.answers[0]?.answer}
                 isSelected={selectedButton === 1}
                 onPress={() => {
                   setSelectedButton(1);
                 }}
               />
               <InputBtn
-                title={questionData[0]?.answers[1]?.answer}
+                title={questionData?.answers[1]?.answer}
                 isSelected={selectedButton === 2}
                 onPress={() => {
                   setSelectedButton(2);
                 }}
               />
               <InputBtn
-                title={questionData[0]?.answers[2]?.answer}
+                title={questionData?.answers[2]?.answer}
                 isSelected={selectedButton === 3}
                 onPress={() => {
                   setSelectedButton(3);
@@ -63,7 +61,10 @@ const QuestionComp1 = ({
             </View>
 
             <View style={styles.button}>
-              <CustomButton btnText="Go to Fluid" onpress={buttonFunction} />
+              <CustomButton
+                btnText="GO TO FLUID"
+                onpress={() => buttonFunction()}
+              />
             </View>
           </View>
         </View>
@@ -72,7 +73,7 @@ const QuestionComp1 = ({
   );
 };
 
-export default QuestionComp1;
+export default MainQuestion1;
 
 export const styles = StyleSheet.create({
   forCount: {

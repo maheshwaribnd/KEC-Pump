@@ -15,7 +15,7 @@ import {
 } from '../../../../Config/AppConst';
 import {Dropdown} from 'react-native-element-dropdown';
 
-const QuestionComp13 = ({count, setCount, getProgress, questionData}) => {
+const MainQuestion6 = ({count, setCount, getProgress, questionData}) => {
   const [value, setValue] = useState(null);
 
   const buttonFunction = () => {
@@ -37,7 +37,7 @@ const QuestionComp13 = ({count, setCount, getProgress, questionData}) => {
         <View style={{marginTop: HEIGHT(10)}}>
           <View>
             <Text style={styles.mainTitle}>
-              {questionData[0]?.question_title}
+              {/* {questionData[0]?.question_title} */}hi
             </Text>
           </View>
           <View style={{marginTop: 10}}>
@@ -90,7 +90,7 @@ const QuestionComp13 = ({count, setCount, getProgress, questionData}) => {
   );
 };
 
-export default QuestionComp13;
+export default MainQuestion6;
 
 const styles = StyleSheet.create({
   mainTitle: {
