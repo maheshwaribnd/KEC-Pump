@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const BASE_URL = 'https://epage.reviewdevelopment.net/api/';
+export const BASE_URL = 'https://kecpump.reviewdevelopment.net/api/';
 
 const constructApiRequest = (path, method, body) => ({
   url: path,
@@ -23,20 +23,39 @@ const requests = {
 // add request path here
 const requestPath = {
   //Get request
-  getQuestions: 'auth/questions',
+  get1stQuestion: 'auth/questions',
 
   //post request
-  postQuestionsId: 'auth/useranswer',
+  postQuestionsId: 'auth/getQuestion',
+
+  // post multi options
+  PostmultiOptions: 'auth/getmultiQuestion',
+
+  // post contact info
   postContactInfo: 'auth/contact',
 };
 
 const ApiManager = {
   // Get API
-  getQuestionsAnswer: () => {
-    return requests.get(`${requestPath.getQuestions}`);
+  get1stQuestion: () => {
+    return requests.get(`${requestPath.get1stQuestion}`);
+  },
+
+  getAllCountries: () => {
+    const API_URL = 'https://restcountries.com/v3.1/all';
+    return axios.get(API_URL);
   },
 
   // Post API
+
+  postQuestionsId: params => {
+    return requests.post(`${requestPath.postQuestionsId}`, params);
+  },
+
+  postmultiOptions: params => {
+    return requests.post(`${requestPath.PostmultiOptions}`, params);
+  },
+
   postContactForm: params => {
     return requests.post(`${requestPath.postContactInfo}`, params);
   },
