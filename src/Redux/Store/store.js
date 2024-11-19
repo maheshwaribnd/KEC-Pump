@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import AnswerData from '../Reducers/Question3Data';
+import AnswerData from '../Reducers/OptionIDData';
 import APIData from '../Reducers/APIDataReducer';
 
 const store = configureStore({

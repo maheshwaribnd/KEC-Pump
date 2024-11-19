@@ -32,7 +32,6 @@ const Card = () => {
   const cardDetailFunction = ({item}) => {
     const handleSkip = () => {
       setIndexIncrease(indexIncrease + 1);
-      console.log('next');
       navigation.navigate('questionmainscreen');
     };
 
