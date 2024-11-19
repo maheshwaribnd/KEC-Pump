@@ -8,7 +8,12 @@ import Snackbar from 'react-native-snackbar';
 import {useDispatch} from 'react-redux';
 import {AnswerDataFunction} from '../../../../Redux/Reducers/OptionIDData';
 
-const RadioCompType1 = ({loader, responseArray, postQuestionIdAPI}) => {
+const RadioCompType1 = ({
+  loader,
+  responseArray,
+  postQuestionIdAPI,
+  NextBtn,
+}) => {
   const dispatch = useDispatch();
   const [selectedButton, setSelectedButton] = useState(null);
 
@@ -92,10 +97,17 @@ const RadioCompType1 = ({loader, responseArray, postQuestionIdAPI}) => {
             </View>
 
             <View style={styles.button}>
-              <CustomButton
-                btnText="GO TO REQUIRED QUANTITY"
-                onpress={() => buttonFunction()}
-              />
+              {NextBtn ? (
+                <CustomButton
+                  btnText={NextBtn}
+                  onpress={() => buttonFunction()}
+                />
+              ) : (
+                <CustomButton
+                  btnText="GO TO REQUIRED QUANTITY"
+                  onpress={() => buttonFunction()}
+                />
+              )}
             </View>
           </View>
         </View>
